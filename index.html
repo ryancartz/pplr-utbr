@@ -71,6 +71,10 @@
             color: #ff4757;
             margin-bottom: 10px;
         }
+        .disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
@@ -84,7 +88,7 @@
         <h2>Quiz Question</h2>
         <p><strong>Who is the most popular YouTuber in the world?</strong></p>
         <p>Select the correct answer within <span class="timer" id="timer">10</span> seconds:</p>
-        <form>
+        <form id="quiz-form">
             <label>
                 <input type="radio" name="youtuber" value="PewDiePie"> PewDiePie
             </label><br>
@@ -110,6 +114,7 @@
     <script>
         let timeLeft = 10;
         const timerElement = document.getElementById("timer");
+        const quizForm = document.getElementById("quiz-form");
         const timerInterval = setInterval(updateTimer, 1000);
 
         function updateTimer() {
@@ -118,13 +123,22 @@
 
             if (timeLeft <= 0) {
                 clearInterval(timerInterval);
-                checkAnswer();
+                disableQuiz();
                 document.getElementById("result").innerText = "Time's up! The correct answer is PewDiePie.";
             }
         }
 
+        function disableQuiz() {
+            const radioButtons = document.querySelectorAll('input[name="youtuber"]');
+            radioButtons.forEach(button => {
+                button.disabled = true;
+            });
+            quizForm.classList.add("disabled");
+        }
+
         function checkAnswer() {
             clearInterval(timerInterval); // Stop the timer
+            disableQuiz(); // Disable the quiz options
             const selected = document.querySelector('input[name="youtuber"]:checked');
             if (selected) {
                 if (selected.value === "PewDiePie") {
