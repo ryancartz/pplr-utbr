@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popular YouTuber Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #ff4757;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        header a {
+            color: white;
+            text-decoration: none;
+            background-color: #2ed573;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .quiz-container {
+            background-color: white;
+            margin: 20px auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .quiz-container h2 {
+            color: #ff4757;
+        }
+        .quiz-container p {
+            font-size: 18px;
+        }
+        .quiz-container button {
+            background-color: #2ed573;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .quiz-container button:hover {
+            background-color: #1e9050;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        footer a {
+            color: #2ed573;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Popular YouTuber Quiz</h1>
+        <a href="https://example.com/follow">Follow</a>
+    </header>
+
+    <div class="quiz-container">
+        <h2>Quiz Question</h2>
+        <p><strong>Who is the most popular YouTuber in the world?</strong></p>
+        <p>Select the correct answer:</p>
+        <form>
+            <label>
+                <input type="radio" name="youtuber" value="PewDiePie"> PewDiePie
+            </label><br>
+            <label>
+                <input type="radio" name="youtuber" value="MrBeast"> MrBeast
+            </label><br>
+            <label>
+                <input type="radio" name="youtuber" value="T-Series"> T-Series
+            </label><br>
+            <label>
+                <input type="radio" name="youtuber" value="Dude Perfect"> Dude Perfect
+            </label><br>
+        </form>
+        <button onclick="checkAnswer()">Submit Answer</button>
+        <button onclick="window.location.href='https://example.com/blog'">Know More</button>
+        <p id="result" style="color: #ff4757; font-weight: bold;"></p>
+    </div>
+
+    <footer>
+        <p>Visit our website: <a href="https://example.com">example.com</a></p>
+    </footer>
+
+    <script>
+        function checkAnswer() {
+            const selected = document.querySelector('input[name="youtuber"]:checked');
+            if (selected) {
+                if (selected.value === "PewDiePie") {
+                    document.getElementById("result").innerText = "Correct! PewDiePie is one of the most popular YouTubers.";
+                } else {
+                    document.getElementById("result").innerText = "Incorrect! Try again.";
+                }
+            } else {
+                document.getElementById("result").innerText = "Please select an answer.";
+            }
+        }
+    </script>
+
+</body>
+</html>
